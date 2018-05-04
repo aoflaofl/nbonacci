@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 
 public class Nbonacci {
   public static void main(String[] args) {
-    bonacciseries(4, 200);
+    bonacciseries(101, 300);
   }
 
   public static void nbonnaci(int n, int m) {
@@ -26,28 +26,28 @@ public class Nbonacci {
 
   static void bonacciseries(int n, int m) {
     // Assuming m > n.
-    BigInteger[] a = new BigInteger[m];
+    BigDecimal[] a = new BigDecimal[m];
 
-    for (int i = 0; i < m; i++) {
-      a[i] = BigInteger.valueOf(0);
+    for (int i = 0; i < n; i++) {
+      a[i] = BigDecimal.valueOf(0);
     }
-    a[n - 1] = BigInteger.valueOf(1);
-    a[n] = BigInteger.valueOf(1);
+    a[n - 1] = BigDecimal.valueOf(1);
+    a[n] = BigDecimal.valueOf(1);
 
     // Uses sliding window
     for (int i = n + 1; i < m; i++) {
-      a[i] = a[i - 1].multiply(BigInteger.valueOf(2L)).subtract(a[i - n - 1]);
+      a[i] = a[i - 1].multiply(BigDecimal.valueOf(2L)).subtract(a[i - n - 1]);
     }
     // Printing result
     for (int i = 0; i < m; i++) {
-      System.out.print(a[i] + " ");
+      System.out.print(i + " " + a[i] + " ");
       if (i >= n) {
 
         // bigIntX is a BigInteger
-        BigDecimal bigDecX = new BigDecimal(a[i]);
-        BigDecimal bigDecY = new BigDecimal(a[i - 1]);
+        BigDecimal bigDecX = /*new BigDecimal*/(a[i]);
+        BigDecimal bigDecY = /*new BigDecimal*/(a[i - 1]);
 
-        System.out.print(bigDecX.divide(bigDecY, 40, RoundingMode.HALF_EVEN));
+        System.out.print(bigDecX.divide(bigDecY, 50, RoundingMode.HALF_EVEN));
       }
       System.out.println();
     }
